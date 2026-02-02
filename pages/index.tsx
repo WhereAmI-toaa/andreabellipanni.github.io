@@ -1,0 +1,101 @@
+import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
+import GradualBlur from '../components/GradualBlur'
+import CardSwap, { Card } from '../components/CardSwap'
+import styles from '../styles/HomePage.module.css'
+
+const Lanyard = dynamic(() => import('../components/Lanyard'), { ssr: false })
+const LightRays = dynamic(() => import('../components/LightRays'), { ssr: false })
+
+export default function Home() {
+  const router = useRouter()
+
+  return (
+    <main className={styles.page}>
+      <div className={styles.pageRays}>
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#ffffff"
+          raysSpeed={0.2}
+          lightSpread={0.3}
+          rayLength={120}
+          followMouse
+          mouseInfluence={0.1}
+          noiseAmount={0}
+          distortion={0}
+          pulsating={false}
+          fadeDistance={4.4}
+          saturation={5.8}
+        />
+      </div>
+      <div className={styles.heroCallout} aria-hidden="true">
+        <span className={styles.heroCalloutText}>Click me</span>
+        <span className={styles.heroCalloutArrow} />
+      </div>
+      <section className={styles.hero}>
+        <Lanyard position={[0, 0, 24]} gravity={[0, -40, 0]} onSelect={() => router.push('/profile')} />
+        <p className={styles.heroHint}>Scroll Down.</p>
+      </section>
+
+      <section className={styles.cardSwapSection}>
+        <div className={styles.cardSwapCopy}>
+          <h2 className={styles.cardSwapTitle}>Projects I&apos;ve worked on</h2>
+          <p className={styles.cardSwapSubtitle}>Just one click away</p>
+        </div>
+        <div className={styles.cardSwapStage}>
+          <CardSwap
+            width={1020}
+            height={560}
+            cardDistance={70}
+            verticalDistance={60}
+            delay={5200}
+            pauseOnHover={true}
+            skewAmount={0}
+          >
+            <Card customClass={styles.swapCardShell}>
+              <div className={styles.swapCardTools}>
+                <span className={`${styles.swapCardCircle} ${styles.swapCardRed}`} />
+                <span className={`${styles.swapCardCircle} ${styles.swapCardYellow}`} />
+                <span className={`${styles.swapCardCircle} ${styles.swapCardGreen}`} />
+              </div>
+              <div className={styles.swapCardContentArea}>
+                <div className={styles.swapCardScreenshot} />
+              </div>
+            </Card>
+            <Card customClass={styles.swapCardShell}>
+              <div className={styles.swapCardTools}>
+                <span className={`${styles.swapCardCircle} ${styles.swapCardRed}`} />
+                <span className={`${styles.swapCardCircle} ${styles.swapCardYellow}`} />
+                <span className={`${styles.swapCardCircle} ${styles.swapCardGreen}`} />
+              </div>
+              <div className={styles.swapCardContentArea}>
+                <div className={styles.swapCardArt} />
+              </div>
+            </Card>
+            <Card customClass={styles.swapCardShell}>
+              <div className={styles.swapCardTools}>
+                <span className={`${styles.swapCardCircle} ${styles.swapCardRed}`} />
+                <span className={`${styles.swapCardCircle} ${styles.swapCardYellow}`} />
+                <span className={`${styles.swapCardCircle} ${styles.swapCardGreen}`} />
+              </div>
+              <div className={styles.swapCardContentArea}>
+                <div className={styles.swapCardArtAlt} />
+              </div>
+            </Card>
+          </CardSwap>
+        </div>
+        <GradualBlur
+          target="page"
+          position="bottom"
+          height="9rem"
+          strength={3}
+          divCount={10}
+          curve="ease-in-out"
+          exponential
+          opacity={1}
+          zIndex={1}
+        />
+      </section>
+    </main>
+  )
+}

@@ -1,0 +1,202 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  isolation: isolate;
+}
+
+.pageRays {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.heroCallout {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(120px, -520px) rotate(-2deg);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  pointer-events: none;
+  z-index: 1;
+  --callout-color: rgba(223, 204, 255, 0.95);
+}
+
+.heroCalloutText {
+  font-family: 'HandmadeAlphabet', 'Caveat', 'Segoe Print', 'Comic Sans MS', cursive;
+  font-size: clamp(1.7rem, 2.4vw, 2.6rem);
+  color: var(--callout-color);
+  letter-spacing: 0.02em;
+  text-shadow: 0 10px 24px rgba(8, 8, 18, 0.6);
+  transform: translate(80px, 200px);
+}
+
+.heroCalloutArrow {
+  width: 260px;
+  aspect-ratio: 564 / 446;
+  display: block;
+  background-color: var(--callout-color);
+  mask-image: url('/images/hand-arrow.png');
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  mask-position: center;
+  -webkit-mask-image: url('/images/hand-arrow.png');
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  -webkit-mask-position: center;
+  transform: scaleX(-1) rotate(-6deg);
+  filter: drop-shadow(0 12px 20px rgba(9, 8, 20, 0.6));
+}
+
+.cardSwapSection {
+  min-height: 100vh;
+  padding: 6rem 6vw 8rem;
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(360px, 1fr);
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 3;
+}
+
+.cardSwapCopy {
+  display: grid;
+  gap: 0.9rem;
+  max-width: 460px;
+}
+
+.cardSwapTitle {
+  font-size: clamp(2.6rem, 4.4vw, 3.8rem);
+  font-weight: 500;
+  color: #e9e7f2;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
+}
+
+.cardSwapSubtitle {
+  color: rgba(196, 196, 214, 0.75);
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.cardSwapStage {
+  position: relative;
+  height: min(680px, 70vh);
+}
+
+.swapCardShell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #011522;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.swapCardTools {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+}
+
+.swapCardCircle {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+}
+
+.swapCardRed {
+  background-color: #ff605c;
+}
+
+.swapCardYellow {
+  background-color: #ffbd44;
+}
+
+.swapCardGreen {
+  background-color: #00ca4e;
+}
+
+.swapCardContentArea {
+  flex: 1;
+  padding: 0.75rem 0.9rem 1rem;
+  display: flex;
+}
+
+.swapCardScreenshot {
+  flex: 1;
+  border-radius: 15px;
+  background-image: url('/images/Screenshot 2026-02-02 at 12.18.22 AM.png');
+  background-size: contain;
+  background-position: 0% 0%;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.swapCardArt, 
+.swapCardArtAlt {
+  flex: 1;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.swapCardArt {
+  background-image: radial-gradient(circle at 20% 20%, rgba(161, 120, 255, 0.8), transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(88, 162, 255, 0.7), transparent 55%),
+    linear-gradient(140deg, rgba(6, 18, 30, 0.95), rgba(10, 20, 32, 0.9));
+}
+
+.swapCardArtAlt {
+  background-image: radial-gradient(circle at 30% 70%, rgba(201, 115, 255, 0.75), transparent 45%),
+    radial-gradient(circle at 75% 35%, rgba(70, 140, 255, 0.7), transparent 50%),
+    linear-gradient(140deg, rgba(6, 18, 30, 0.95), rgba(10, 20, 32, 0.9));
+}
+
+@media (max-width: 900px) {
+  .cardSwapSection {
+    grid-template-columns: 1fr;
+  }
+
+  .heroCallout {
+    transform: translate(70px, -290px) rotate(-2deg) scale(0.9);
+  }
+}
+
+.heroHint {
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  transform: translateX(-50%);
+  color: #c9b8ff;
+  font-size: clamp(5.4rem, 13.5vw, 10.8rem);
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  text-shadow: 0 18px 50px rgba(8, 8, 18, 0.7);
+  pointer-events: none;
+  z-index: 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .heroCallout {
+    transform: translate(10px, -270px) rotate(-2deg) scale(0.8);
+  }
+}

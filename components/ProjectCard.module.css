@@ -1,0 +1,58 @@
+.card {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 14px;
+  background: rgba(20, 20, 31, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(139, 92, 246, 0.5);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.file {
+  width: 32px;
+  height: 40px;
+  border-radius: 6px;
+  background: linear-gradient(160deg, rgba(139, 92, 246, 0.4), rgba(139, 92, 246, 0.1));
+  border: 1px solid rgba(139, 92, 246, 0.5);
+}
+
+.title {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.description {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.stackItem {
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  font-size: 0.75rem;
+  color: var(--accent);
+}
