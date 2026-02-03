@@ -1,13 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Space+Grotesk:wght@400;500;600&family=Caveat:wght@600&display=swap');
 
-@font-face {
-  font-family: 'HandmadeAlphabet';
-  src: url('/fonts/HandmadeAlphabet.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   color-scheme: dark;
   --bg: #000000;

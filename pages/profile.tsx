@@ -3,6 +3,10 @@ import Folder from '../components/Folder'
 import styles from '../styles/ProfilePage.module.css'
 
 export default function Profile() {
+  const rawBasePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
+  const trimmedBasePath = rawBasePath.replace(/^\/+/, '').replace(/\/+$/, '')
+  const basePath = trimmedBasePath ? `/${trimmedBasePath}` : ''
+
   return (
     <main className={styles.page}>
       <section className={styles.hero}>
@@ -12,7 +16,7 @@ export default function Profile() {
           handle="andreabellipannii"
           status="Online"
           contactText="Contact Me"
-          avatarUrl="/images/profile-avatar.svg"
+          avatarUrl={`${basePath}/images/profile-avatar.svg`}
           showUserInfo
           enableTilt
           enableMobileTilt={true}

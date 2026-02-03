@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic'
+import type { CSSProperties } from 'react'
 import { useRouter } from 'next/router'
 import GradualBlur from '../components/GradualBlur'
 import CardSwap, { Card } from '../components/CardSwap'
@@ -9,6 +10,13 @@ const LightRays = dynamic(() => import('../components/LightRays'), { ssr: false 
 
 export default function Home() {
   const router = useRouter()
+  const rawBasePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
+  const trimmedBasePath = rawBasePath.replace(/^\/+/, '').replace(/\/+$/, '')
+  const basePath = trimmedBasePath ? `/${trimmedBasePath}` : ''
+  const calloutStyle = {
+    '--callout-arrow': `url(${basePath}/images/hand-arrow.png)`
+  } as CSSProperties
+  const clarusImage = `${basePath}/images/clarus.png`
 
   return (
     <main className={styles.page}>
@@ -28,7 +36,7 @@ export default function Home() {
           saturation={5.8}
         />
       </div>
-      <div className={styles.heroCallout} aria-hidden="true">
+      <div className={styles.heroCallout} aria-hidden="true" style={calloutStyle}>
         <span className={styles.heroCalloutText}>Click me</span>
         <span className={styles.heroCalloutArrow} />
       </div>
@@ -59,7 +67,10 @@ export default function Home() {
                 <span className={`${styles.swapCardCircle} ${styles.swapCardGreen}`} />
               </div>
               <div className={styles.swapCardContentArea}>
-                <div className={styles.swapCardScreenshot} />
+                <div
+                  className={styles.swapCardScreenshot}
+                  style={{ backgroundImage: `url(${clarusImage})` }}
+                />
               </div>
             </Card>
             <Card customClass={styles.swapCardShell}>
